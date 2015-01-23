@@ -12,21 +12,22 @@
 
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	
   	<tracking.version>0.0.1-SNAPSHOT</tracking.version>
    
     <java.version>1.8</java.version>
-    
     <spring.version>4.1.4.RELEASE</spring.version>
     <spring.security.version>3.2.5.RELEASE</spring.security.version>
     <spring.integration.version>4.1.2.RELEASE</spring.integration.version>
     <testng.version>6.8.17</testng.version>
     
+    <logback.version>1.1.2</logback.version>
+    <slf4j.api.version>1.7.10</slf4j.api.version>
     
     <!-- maven plugin versions -->
     <maven-compiler-plugin-version>3.2</maven-compiler-plugin-version>
     <maven-install-plugin-version>2.5.2</maven-install-plugin-version>
     <maven-source-plugin-version>2.4</maven-source-plugin-version>
+    
   </properties>
 
   <modules>
@@ -86,6 +87,30 @@
 		<artifactId>spring-integration-core</artifactId>
 		<version>${spring.integration.version}</version>
 	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		<version>${logback.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-core</artifactId>
+		<version>${logback.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-access</artifactId>
+		<version>${logback.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.api.version}</version>
+	</dependency>
+	
+	
+	
   </dependencies>
- 
+
+	 
 </project>
