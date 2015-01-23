@@ -3,13 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.gslab.tracking</groupId>
+    <groupId>com.javahelp.tracking</groupId>
     <artifactId>tracking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.gslab.tracking</groupId>
   <artifactId>Tracking-Server</artifactId>
-  <version>${tracking.version}</version>
+  <version>${tracking.app.version}</version>
   <name>Tracking-Server</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -19,6 +18,9 @@
    
 	
   </dependencies>
+  <build>
+  	<finalName>tracking</finalName>
+  </build>
   <profiles>
   
   </profiles>

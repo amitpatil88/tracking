@@ -3,20 +3,26 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.gslab.tracking</groupId>
+    <groupId>com.javahelp.tracking</groupId>
     <artifactId>tracking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.gslab.tracking</groupId>
+  
   <artifactId>Tracking-War</artifactId>
-  <version>${tracking.version}</version>
+  <version>${tracking.app.version}</version>
   <name>Tracking-War</name>
   <packaging>war</packaging>
   <url>http://maven.apache.org</url>
-  <properties>
   
+  <properties>
+  	
   </properties>
+  	
   <dependencies>
-   
+  	<dependency>
+  		<groupId>com.javahelp.tracking</groupId>
+  		<artifactId>Tracking-Server</artifactId>
+ 		 <version>${tracking.app.version}</version>
+ 	</dependency>
   </dependencies>
 </project>
