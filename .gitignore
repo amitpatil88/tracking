@@ -1,0 +1,9 @@
+.project
+.classpath
+.settings/
+/Tracking-Server/target
+/Tracking-Server/.classpath
+Tracking-Server/.settings/
+/Tracking-War/target
+Tracking-War/.classpath
+/Tracking-War/.settings/
