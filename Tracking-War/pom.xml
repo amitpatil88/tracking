@@ -11,6 +11,7 @@
   <artifactId>Tracking-War</artifactId>
   <version>${tracking.version}</version>
   <name>Tracking-War</name>
+  <packaging>war</packaging>
   <url>http://maven.apache.org</url>
   <properties>
   
