@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.gslab.tracking</groupId>
+  <artifactId>tracking</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>TrackingUI</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	
+  	<tracking.version>0.0.1-SNAPSHOT</tracking.version>
+   
+    <java.version>1.8</java.version>
+    
+    <spring.version>4.1.4.RELEASE</spring.version>
+    <spring.security.version>3.2.5.RELEASE</spring.security.version>
+    <spring.integration.version>4.1.2.RELEASE</spring.integration.version>
+    <testng.version>6.8.17</testng.version>
+    
+    
+    <!-- maven plugin versions -->
+    <maven-compiler-plugin-version>3.2</maven-compiler-plugin-version>
+    <maven-install-plugin-version>2.5.2</maven-install-plugin-version>
+    <maven-source-plugin-version>2.4</maven-source-plugin-version>
+  </properties>
+
+  <modules>
+  	<module>Tracking-War</module>
+  	<module>Tracking-Server</module>
+  </modules>
+  	
+  <build>
+  	<pluginManagement>
+  		<plugins>
+  			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-compiler-plugin</artifactId>
+  				<version>${maven-compiler-plugin-version}</version>
+  				<configuration>
+  					<source>${java.version}</source>
+  					<target>${java.version}</target>
+  				</configuration>
+  			</plugin>
+  			
+  			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-source-plugin</artifactId>
+  				<version>${maven-source-plugin-version}</version>
+  			</plugin>
+  			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-install-plugin</artifactId>
+  				<version>${maven-install-plugin-version}</version>
+  			</plugin>
+  		</plugins>
+  	</pluginManagement>
+  </build>	
+  	
+  	
+  <dependencies>
+    	<dependency>
+		<groupId>org.testng</groupId>
+		<artifactId>testng</artifactId>
+		<version>${testng.version}</version>
+	</dependency>
+	<!-- spring -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<!-- spring security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<!-- spring integration -->
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-core</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+  </dependencies>
+ 
+</project>
