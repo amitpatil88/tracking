@@ -11,16 +11,11 @@
   <version>${tracking.app.version}</version>
   <name>Tracking-Server</name>
   <url>http://maven.apache.org</url>
-  <properties>
-   
-  </properties>
   <dependencies>
    
 	
   </dependencies>
-  <build>
-  	<finalName>tracking</finalName>
-  </build>
+  
   <profiles>
   
   </profiles>
