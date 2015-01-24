@@ -3,8 +3,17 @@
 	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
  
  	<display-name>Tracking Application</display-name>
-  
   	<distributable/>
+  	
+  	<session-config>
+  		<session-timeout>1</session-timeout>
+  	</session-config>
+	
+	<!-- spring root -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/applicationContext.xml,/WEB-INF/classes/webSecurityConfig.xml</param-value>
+	</context-param>
 	
 	<!-- Listener -->
 	<listener>
@@ -13,14 +22,32 @@
 	<listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/classes/applicationContext.xml
-        </param-value>
-    </context-param>
     
-    <!-- Filters -->
+    
+	<!-- spring child  -->
+	<servlet>
+    	<servlet-name>services</servlet-name>
+    	<servlet-class>
+    		org.springframework.web.servlet.DispatcherServlet
+    	</servlet-class>
+    	<load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>services</servlet-name>
+    	<url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    
+   	<!-- Spring security --> 
+   	 <filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+ 
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
      <filter>
         <filter-name>encoding-filter</filter-name>
         <filter-class>
@@ -41,18 +68,8 @@
     </filter-mapping>
     
 	
-	<servlet>
-    	<servlet-name>services</servlet-name>
-    	<servlet-class>
-    		org.springframework.web.servlet.DispatcherServlet
-    	</servlet-class>
-    	<load-on-startup>3</load-on-startup>
-    </servlet>
     
-    <servlet-mapping>
-    	<servlet-name>services</servlet-name>
-    	<url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
+    
     
     <welcome-file-list>
     	<welcome-file>index.jsp</welcome-file>
