@@ -22,7 +22,7 @@ public class ApplicationManager {
 	}
 	
 	public void initialize(){
-				
+		logger.info("Application successfully up");		
 	}
 	
 	public void destroy(){

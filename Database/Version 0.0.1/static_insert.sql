@@ -30,4 +30,4 @@ insert into role_rights_xref(role_id,right_id) values ((select role_id from role
 -- create user
 insert into users(username,password,is_enabled,created_date,invalid_login_attempt) values('admin','=da81be5f13dc8286134953bb09fc88449bc3ce82','Y',sysdate(),0);	
 
-insert into user_profile(user_id,first_name,middle_name,last_name,access_level,email_id,mobile_no) values ((select user_id from users where username ='admin'),'Amit','Vasanta','Patil','A','amitpatil88@gmail.com',9561900265);
+insert into user_profile(user_id,first_name,middle_name,last_name,access_level,email_id,mobile_no) values ((select user_id from users where username ='admin'),'Amit','Vasanta','Patil','A','amitpatil88@gmail.com',342);
