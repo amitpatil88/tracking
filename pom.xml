@@ -1,5 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+			http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.javahelp.tracking</groupId>
@@ -18,6 +21,9 @@
     <spring.version>4.1.4.RELEASE</spring.version>
     <spring.security.version>3.2.5.RELEASE</spring.security.version>
     <spring.integration.version>4.1.2.RELEASE</spring.integration.version>
+    <spring.integration.splunk>1.1.0.RELEASE</spring.integration.splunk>
+    <spring.integration.adapter>1.0.4.RELEASE</spring.integration.adapter>
+    
     <spring.support.version>2.0.8</spring.support.version>
     <testng.version>6.8.17</testng.version>
     
@@ -46,7 +52,25 @@
   <modules>
   	<module>Tracking-War</module>
   	<module>Tracking-Server</module>
+    <module>Tracking-SpringIntegration</module>
   </modules>
+  
+  <repositories>
+  	<repository>
+        <id>springsource-milestone</id>
+        <url>http://maven.springframework.org/milestone</url>
+    </repository>
+    <repository>
+        <id>org.springframework.repository.maven</id>
+        <name>SpringSource Maven Repository</name>
+        <url>http://repository.springframework.org/maven/</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+
+  </repositories>	
+  	
   	
   <build>
   	<pluginManagement>
@@ -108,12 +132,7 @@
 		<artifactId>spring-expression</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-oxm</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
+		<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
 		<version>${spring.version}</version>
@@ -145,6 +164,7 @@
 		<artifactId>spring-web</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
+
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
@@ -177,7 +197,11 @@
 		<artifactId>spring-security-ldap</artifactId>
 		<version>${spring.security.version}</version>
 	</dependency>
-	
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-crypto</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
 	
 	<!-- spring integration -->
 	<dependency>
@@ -185,6 +209,83 @@
 		<artifactId>spring-integration-core</artifactId>
 		<version>${spring.integration.version}</version>
 	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-adapter</artifactId>
+		<version>${spring.integration.adapter}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-mail</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-stream</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-jms</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-jmx</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-file</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-jdbc</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-xml</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-amqp</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-ws</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-ftp</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-sftp</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-twitter</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-websocket</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.integration</groupId>
+		<artifactId>spring-integration-security</artifactId>
+		<version>${spring.integration.version}</version>
+	</dependency>
+	
 	<dependency>
 		<groupId>ch.qos.logback</groupId>
 		<artifactId>logback-classic</artifactId>
@@ -206,6 +307,11 @@
 		<version>${slf4j.api.version}</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>org.beanshell</groupId>
+		<artifactId>bsh</artifactId>
+		<version>2.0b4</version>
+	</dependency>
 	
 	<dependency>
 		<groupId>org.owasp.esapi</groupId>
