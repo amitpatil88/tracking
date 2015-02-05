@@ -17,7 +17,7 @@
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<tracking.app.version>0.0.1-SNAPSHOT</tracking.app.version>
    
-    <java.version>1.7</java.version>
+    <java.version>1.8</java.version>
     <spring.version>4.1.4.RELEASE</spring.version>
     <spring.security.version>3.2.5.RELEASE</spring.security.version>
     <spring.integration.version>4.1.2.RELEASE</spring.integration.version>
