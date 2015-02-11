@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/stream
+		http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd">
+		
+	<!-- declare the gateway -->
+	<int:gateway id="shop" service-interface="com.javahelp.spring.integration.labs.services.Shop"></int:gateway>
+	
+	<!-- Input channel where order will be place for processing -->
+	<int:channel id="ordersChannel"></int:channel>
+	
+	
+	<int:logging-channel-adapter log-full-message="true" id="logger"
+		level="DEBUG"/>
+
+ 	<!-- <int:logging-channel-adapter id="logger" logger-name="WIRETAP"
+ 		level="INFO" expression="'payload: '+ getpayload"
+ 	></int:logging-channel-adapter>
+	 -->
+	
+	<!-- Configure order splitter -->
+	<int:splitter input-channel="ordersChannel" ref="orderSplitter" output-channel="orderItemsChannel"/>
+	<beans:bean id="orderSplitter" class="com.javahelp.spring.integration.labs.services.OrderSplitter" />
+	
+	<int:channel id="orderItemsChannel"></int:channel>
+	
+	
+	<!-- Order Item Router configuration -->
+	<int:router input-channel="orderItemsChannel" method="routeOrder" ref="orderRouter" />
+	<beans:bean class="com.javahelp.spring.integration.labs.services.OrderItemRouter" id="orderRouter" />
+	
+	
+	<!-- Books Item Channel -->
+	<int:channel id="booksItemChannel">
+		<int:queue capacity="10" />
+	</int:channel>
+	<int:service-activator input-channel="booksItemChannel" ref="shopKeeper" method="processBooks" output-channel="processedItem" />
+	
+	<!-- Music Item Channel -->
+	<int:channel id="musicsItemChannel">
+		<int:queue capacity="10" />
+	</int:channel>
+	<int:service-activator input-channel="musicsItemChannel" ref="shopKeeper" method="processMusic" output-channel="processedItem" />
+	
+	
+	<!-- Software Item Channel -->
+	<int:channel id="softwaresItemChannel">
+		<int:queue capacity="10" />
+	</int:channel>	
+	<int:service-activator input-channel="softwaresItemChannel" ref="shopKeeper" method="processSoftwares" output-channel="processedItem"/>
+	
+	
+	<beans:bean class="com.javahelp.spring.integration.labs.services.Shopkeeper" id="shopKeeper" ></beans:bean>
+	
+	<int:channel id="processedItem"></int:channel>
+	
+	<int:aggregator input-channel="processedItem" method="prepareDelivery" ref="orderCompleter" output-channel="deliveries" />
+	<beans:bean class="com.javahelp.spring.integration.labs.services.OrderCompleter" id="orderCompleter"></beans:bean>
+
+	<int-stream:stdout-channel-adapter id="deliveries" ></int-stream:stdout-channel-adapter>
+	
+	<int:poller default="true" fixed-delay="1000" id="poller"></int:poller>
+	
+</beans:beans>
