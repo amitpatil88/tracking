@@ -13,10 +13,6 @@
   <name>Tracking-War</name>
   <packaging>war</packaging>
   <url>http://maven.apache.org</url>
-  
-  <properties>
-  	
-  </properties>
   	
   <dependencies>
   	<dependency>
@@ -24,5 +20,11 @@
   		<artifactId>Tracking-Server</artifactId>
  		 <version>${tracking.app.version}</version>
  	</dependency>
+ 	<dependency>
+  		<groupId>com.javahelp.tracking</groupId>
+  		<artifactId>Tracking-SpringIntegration</artifactId>
+ 		 <version>${tracking.app.version}</version>
+ 	</dependency>
   </dependencies>
+  
 </project>

@@ -10,7 +10,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>TrackingUI</name>
+  <name>tracking</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -100,13 +100,9 @@
   </build>	
   	
   	
+  <dependencyManagement>
   <dependencies>
-    	<dependency>
-		<groupId>org.testng</groupId>
-		<artifactId>testng</artifactId>
-		<version>${testng.version}</version>
-	</dependency>
-	<!-- spring -->
+   <!-- spring -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
@@ -389,7 +385,16 @@
 	</dependency>
     	
   </dependencies>
-
+  </dependencyManagement>	
+  	
+	<dependencies>
+		 <dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+	
+	</dependencies>
 
    <profiles>
 		
